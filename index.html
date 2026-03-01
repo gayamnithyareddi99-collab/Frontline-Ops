@@ -193,6 +193,150 @@ footer{
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
+<!-- ================= CLEAN NAVBAR ================= -->
+<nav class="navbar">
+
+  <div class="logo">Frontline Ops</div>
+
+  <!-- Desktop Menu -->
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#platform">Platform</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#market">UK Market</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#founder">Founder</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+  <!-- Mobile Hamburger -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+</nav>
+
+<style>
+
+/* NAVBAR */
+.navbar{
+  background:#ffffff;
+  padding:18px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 12px rgba(0,0,0,0.05);
+}
+
+.logo{
+  font-size:20px;
+  font-weight:700;
+  color:#1E5AA8;
+}
+
+/* Desktop Menu */
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#153D73;
+  font-weight:500;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.nav-links a:hover{
+  color:#2F80ED;
+}
+
+/* Hamburger Hidden on Desktop */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:26px;
+  height:3px;
+  background:#1E5AA8;
+  border-radius:3px;
+  transition:0.3s;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
+
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+
+.hamburger.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+
+  .nav-links{
+    position:fixed;
+    top:70px;
+    right:-100%;
+    width:250px;
+    height:100vh;
+    background:#ffffff;
+    flex-direction:column;
+    padding:40px 25px;
+    gap:20px;
+    box-shadow:-5px 0 20px rgba(0,0,0,0.08);
+    transition:0.4s ease;
+  }
+
+  .nav-links.active{
+    right:0;
+  }
+
+  .hamburger{
+    display:flex;
+  }
+
+}
+
+</style>
+
+<script>
+
+const hamburger = document.getElementById("hamburger");
+const navLinks = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", ()=>{
+  hamburger.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-links a").forEach(link=>{
+  link.addEventListener("click", ()=>{
+    hamburger.classList.remove("active");
+    navLinks.classList.remove("active");
+  });
+});
+
+</script>
 <!-- ================= PREMIUM HERO SECTION ================= -->
 <section class="hero" id="home">
 
@@ -450,17 +594,78 @@ footer{
   margin:0;
   font-weight:600;
 }
+/* ================= PREMIUM MOBILE UPGRADE ================= */
+@media(max-width:768px){
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .hero-container{
+  .hero{
+    padding:80px 6%;
+  }
+
+  .hero-left h1{
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .description{
+    font-size:14px;
+    line-height:1.6;
+  }
+
+  .badge{
+    font-size:11px;
+    padding:5px 14px;
+  }
+
+  .divider{
+    width:50px;
+    margin:12px 0 18px;
+  }
+
+  /* Buttons stack */
+  .buttons{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .btn-primary,
+  .btn-outline{
+    width:100%;
+    max-width:280px;
+    padding:12px;
+    font-size:14px;
+  }
+
+  /* Trust strip stack */
+  .trust-strip{
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .trust-strip strong{
+    font-size:16px;
+  }
+
+  .trust-strip span{
+    font-size:12px;
+  }
+
+  /* Dashboard card resize */
+  .dashboard-card{
+    padding:25px;
+  }
+
+  .info-grid{
     grid-template-columns:1fr;
   }
 
-  .trust-strip{
-    flex-direction:column;
-    gap:15px;
+  .info-box{
+    padding:12px;
   }
+
+  .card-header{
+    font-size:14px;
+  }
+
 }
 </style>
 
@@ -703,13 +908,82 @@ document.querySelector(".btn-outline").onclick = function(){
   font-size:14px;
   color:#555;
 }
+/* ================= PREMIUM MOBILE UPGRADE ================= */
+@media(max-width:768px){
 
-/* RESPONSIVE */
-
-@media(max-width:900px){
-  .about-container{
-    grid-template-columns:1fr;
+  .about-section{
+    padding:90px 6%;
   }
+
+  .about-left h2{
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .about-description{
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:30px;
+  }
+
+  .about-badge{
+    font-size:11px;
+    padding:5px 14px;
+  }
+
+  /* Highlights */
+  .about-highlights{
+    gap:18px;
+    margin-bottom:30px;
+  }
+
+  .highlight{
+    gap:14px;
+  }
+
+  .highlight-icon{
+    width:38px;
+    height:38px;
+    font-size:13px;
+  }
+
+  .highlight h4{
+    font-size:15px;
+  }
+
+  .highlight p{
+    font-size:13px;
+  }
+
+  /* Button Full Width */
+  .about-btn{
+    width:100%;
+    max-width:280px;
+    padding:12px 20px;
+    font-size:14px;
+  }
+
+  /* Right Card */
+  .about-card{
+    padding:30px 25px;
+  }
+
+  .about-card h3{
+    font-size:18px;
+  }
+
+  .about-card ul li{
+    font-size:14px;
+  }
+
+  .market-box h4{
+    font-size:16px;
+  }
+
+  .market-box p{
+    font-size:13px;
+  }
+
 }
 </style>
 
@@ -1126,24 +1400,86 @@ document.querySelector(".about-btn").addEventListener("click", function(){
   color:white;
   box-shadow:0 0 25px rgba(30,90,168,0.5);
 }
-/* MOBILE */
-@media(max-width:900px){
+/* ================= PREMIUM MOBILE UPGRADE ================= */
+@media(max-width:768px){
+
+  .process-section{
+    padding:100px 6%;
+  }
+
+  .process-header h2{
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .process-header p{
+    font-size:14px;
+    line-height:1.6;
+  }
+
+  .tag{
+    font-size:11px;
+    padding:5px 16px;
+  }
+
+  /* Timeline Line Position */
   .timeline-line,
-  .timeline-progress{ left:25px; }
+  .timeline-progress{
+    left:22px;
+  }
 
   .timeline-item{
     width:100%;
-    padding-left:85px;
-    text-align:left;
+    padding:35px 20px 35px 75px;
+    text-align:left !important;
   }
 
   .timeline-item:nth-child(even){
     left:0;
   }
 
+  /* Step Number */
   .timeline-number{
+    width:50px;
+    height:50px;
+    font-size:14px;
     left:0 !important;
+    top:35px;
   }
+
+  /* Card Adjustments */
+  .timeline-content{
+    padding:25px;
+  }
+
+  .timeline-content h3{
+    font-size:18px;
+  }
+
+  .timeline-content p{
+    font-size:14px;
+  }
+
+  /* Connector Dot */
+  .timeline-item::before{
+    left:16px !important;
+  }
+
+  /* Learn Button Full Width */
+  .learn-btn{
+    width:100%;
+    max-width:220px;
+    font-size:14px;
+    padding:10px 18px;
+  }
+
+  /* Reduce glow intensity on small screens */
+  .timeline-content.active{
+    box-shadow:
+      0 15px 50px rgba(30,90,168,0.2),
+      0 0 0 2px rgba(30,90,168,0.1);
+  }
+
 }
 /* DOUBLE BORDER CARD */
 .timeline-content{
@@ -1453,33 +1789,68 @@ document.querySelectorAll(".learn-btn").forEach(btn=>{
   opacity:1 !important;
   transform:translateY(0) !important;
 }
+/* ================= PREMIUM MOBILE UPGRADE ================= */
+@media(max-width:768px){
 
-/* RESPONSIVE */
-@media(max-width:1000px){
-
-  .platform-container{
-    flex-direction:column;
-    text-align:center;
+  .platform-section{
+    padding:100px 6%;
   }
 
+  .platform-content h2{
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .platform-content p{
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:35px;
+  }
+
+  .platform-badge{
+    font-size:11px;
+    padding:6px 16px;
+  }
+
+  /* Features spacing */
   .platform-features{
-    grid-template-columns:1fr;
+    gap:15px;
   }
 
+  .feature-card{
+    padding:16px;
+  }
+
+  .feature-card h4{
+    font-size:15px;
+  }
+
+  .feature-card p{
+    font-size:12px;
+  }
+
+  /* Button full width */
+  .platform-btn{
+    width:100%;
+    max-width:320px;
+    font-size:15px;
+  }
+
+  /* Images scaling clean */
   .platform-visual{
-    flex-direction:column;
-    margin-top:60px;
+    gap:25px;
   }
 
   .dashboard-ui{
     width:100%;
-    max-width:500px;
+    max-width:100%;
   }
 
   .mobile-ui{
-    width:70%;
-    max-width:260px;
+    width:75%;
+    max-width:240px;
   }
+
 }
 
 </style>
@@ -1501,7 +1872,7 @@ window.addEventListener("scroll", function(){
 
 </script>
 <!-- ================= UK MARKET GRAPH ADVANCED ================= -->
-<section class="uk-graph-section" id="market">
+<section class="uk-graph-section" id="uk-market">
 
   <div class="uk-graph-container">
 
@@ -1693,79 +2064,9 @@ window.addEventListener("scroll", function(){
     align-items:center;
   }
 }
-/* Smooth entrance animation */
-.uk-graph-section{
-  animation:fadeUp 1s ease forwards;
-}
-
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(40px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-/* Metric Card Animation */
-.metric{
-  animation:floatCard 4s ease-in-out infinite;
-}
-
-@keyframes floatCard{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
-  100%{transform:translateY(0);}
-}
-
-/* Highlight metric pulse */
-.highlight-metric{
-  animation:pulseGlow 2s infinite;
-}
-
-@keyframes pulseGlow{
-  0%{box-shadow:0 0 0 rgba(47,128,237,0.5);}
-  50%{box-shadow:0 0 30px rgba(47,128,237,0.6);}
-  100%{box-shadow:0 0 0 rgba(47,128,237,0.5);}
-}
-
-/* Bar Glow Effect */
-.bar-fill{
-  position:relative;
-  overflow:hidden;
-}
-
-.bar-fill::after{
-  content:'';
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
-  animation:shine 3s infinite;
-}
-
-@keyframes shine{
-  0%{left:-100%;}
-  100%{left:100%;}
-}
 </style>
 
 <script>
-function animateCount(el, finalValue){
-  let start = 0;
-  let duration = 1500;
-  let increment = finalValue / (duration / 16);
-
-  function update(){
-    start += increment;
-    if(start >= finalValue){
-      el.innerText = finalValue.toLocaleString() + "+";
-      return;
-    }
-    el.innerText = Math.floor(start).toLocaleString() + "+";
-    requestAnimationFrame(update);
-  }
-  update();
-}
-
 window.addEventListener("scroll", function(){
 
   const section = document.querySelector("#uk-market");
@@ -1782,15 +2083,11 @@ window.addEventListener("scroll", function(){
     document.querySelectorAll(".bar-fill").forEach(bar=>{
       bar.classList.add("animate");
     });
-
-    // Animate numbers once
-    animateCount(document.querySelector(".hospitality span"),170000);
-    animateCount(document.querySelector(".retail span"),45000);
-
   }
 
 });
 </script>
+
 <!-- FOUNDER WEBSITE SECTION -->
 <section class="founder-section" id="founder">
 
@@ -2042,13 +2339,80 @@ window.addEventListener("scroll", function(){
   font-size:14px;
   color:#666;
 }
+/* ================= PREMIUM MOBILE UPGRADE ================= */
+@media(max-width:768px){
 
-/* RESPONSIVE */
-@media(max-width:900px){
+  .founder-section{
+    padding:90px 6%;
+  }
+
+  .founder-intro{
+    margin-bottom:60px;
+  }
+
+  .founder-intro h2{
+    font-size:30px;
+    line-height:1.3;
+  }
+
+  .intro-text{
+    font-size:15px;
+    line-height:1.6;
+  }
+
   .founder-grid{
     grid-template-columns:1fr;
-    gap:60px;
+    gap:50px;
   }
+
+  .name-block{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+
+  .founder-content h3{
+    font-size:22px;
+  }
+
+  .role-badge{
+    font-size:11px;
+    padding:5px 14px;
+  }
+
+  .content-line{
+    margin:20px 0;
+  }
+
+  .founder-content p{
+    font-size:15px;
+    line-height:1.7;
+  }
+
+  .founder-quote{
+    font-size:15px;
+    padding:20px;
+  }
+
+  .visual-card{
+    padding:22px;
+    gap:15px;
+  }
+
+  .icon-box{
+    width:45px;
+    height:45px;
+    font-size:14px;
+  }
+
+  .visual-card h4{
+    font-size:16px;
+  }
+
+  .visual-card p{
+    font-size:13px;
+  }
+
 }
 </style>
 <!-- PRICING SECTION -->
@@ -2298,6 +2662,73 @@ window.addEventListener("scroll", function(){
 .primary-btn:hover{
   background:#1E5AA8;
 }
+/* ================= PREMIUM MOBILE UPGRADE ================= */
+@media(max-width:768px){
+
+  .pricing-section{
+    padding:90px 6%;
+  }
+
+  .pricing-title{
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .pricing-subtitle{
+    font-size:15px;
+    margin-bottom:50px;
+  }
+
+  .pricing-grid{
+    gap:25px;
+  }
+
+  .pricing-card{
+    padding:40px 25px;
+    text-align:left;
+  }
+
+  /* Remove scale effect on mobile */
+  .featured{
+    transform:none;
+  }
+
+  .price-block{
+    margin:20px 0 5px;
+  }
+
+  .amount{
+    font-size:32px;
+  }
+
+  .currency{
+    font-size:18px;
+    margin-top:4px;
+  }
+
+  .per{
+    font-size:13px;
+    margin-bottom:20px;
+  }
+
+  .pricing-card ul li{
+    font-size:14px;
+    margin-bottom:12px;
+  }
+
+  .pricing-btn{
+    width:100%;
+    padding:14px 18px;
+    font-size:14px;
+  }
+
+  .featured-label{
+    right:15px;
+    font-size:11px;
+    padding:5px 12px;
+  }
+
+}
 </style>
 
 <script>
@@ -2507,10 +2938,63 @@ document.querySelectorAll(".pricing-btn").forEach(btn=>{
   transform:rotate(45deg);
 }
 
-@media(max-width:900px){
+/* ================= PREMIUM MOBILE UPGRADE ================= */
+@media(max-width:768px){
+
+  .faq-section{
+    padding:90px 6%;
+  }
+
+  .faq-title{
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .faq-subtitle{
+    font-size:14px;
+    margin-bottom:40px;
+  }
+
   .faq-grid{
     grid-template-columns:1fr;
+    gap:18px;
   }
+
+  .faq-card{
+    border-radius:14px;
+  }
+
+  .faq-question{
+    padding:18px;
+    align-items:flex-start;
+  }
+
+  .faq-left{
+    gap:12px;
+  }
+
+  .faq-icon{
+    width:34px;
+    height:34px;
+    font-size:12px;
+  }
+
+  .faq-question span{
+    font-size:15px;
+    text-align:left;
+    line-height:1.4;
+  }
+
+  .arrow{
+    font-size:18px;
+    margin-top:4px;
+  }
+
+  .faq-answer{
+    font-size:14px;
+    line-height:1.6;
+  }
+
 }
 </style>
 
@@ -2603,6 +3087,43 @@ document.querySelectorAll(".faq-question").forEach(btn=>{
   margin-top:30px;
   font-size:14px;
   opacity:0.85;
+}
+/* ================= PREMIUM MOBILE UPGRADE ================= */
+@media(max-width:768px){
+
+  .contact-section{
+    padding:80px 6%;
+  }
+
+  .contact-box{
+    max-width:100%;
+  }
+
+  .contact-box h2{
+    font-size:26px;
+    line-height:1.3;
+    margin-bottom:18px;
+  }
+
+  .contact-box p{
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:30px;
+  }
+
+  #emailBtn{
+    width:100%;
+    max-width:320px;
+    padding:15px 20px;
+    font-size:15px;
+  }
+
+  .trust-line{
+    font-size:13px;
+    line-height:1.6;
+    padding:0 10px;
+  }
+
 }
 </style>
 
@@ -2710,13 +3231,42 @@ Kind regards,
   font-size:12px;
   color:#888;
 }
-
-/* Mobile Responsive */
+/* Premium Mobile Upgrade */
 @media(max-width:768px){
+
+  .footer{
+    padding:35px 8%;
+  }
+
   .footer-container{
     flex-direction:column;
     text-align:center;
+    gap:20px;
   }
+
+  .footer-brand{
+    align-items:center;
+  }
+
+  .brand-name{
+    font-size:18px;
+  }
+
+  .tagline{
+    font-size:13px;
+  }
+
+  .footer-info{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px;
+  }
+
+  .footer-copy{
+    margin-top:10px;
+    font-size:12px;
+  }
+
 }
 </style>
 
